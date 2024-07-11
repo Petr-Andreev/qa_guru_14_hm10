@@ -1,9 +1,9 @@
-from data import users
+from data import data_name
 from pages.github_page import GitHubPage
 
+github_form = GitHubPage()
 
 def test_open():
-    github_form = GitHubPage()
-    admin = users.admin
+    issue = data_name.issue
     github_form.open()
-    github_form.assert_name_issue(admin)
+    github_form.assert_name_issue(issue)

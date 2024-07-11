@@ -1,5 +1,5 @@
 from selene import browser, have
-from data.users import User
+from data.data_name import Data
 
 
 class GitHubPage:
@@ -19,8 +19,8 @@ class GitHubPage:
     def should_have_text(self, text):
         browser.all('.markdown-title').first.should(have.text(text))
 
-    def assert_name_issue(self, admin: User):
+    def assert_name_issue(self, issue: Data):
         self.click_search()
-        self.search_repo(admin.repo)
-        self.search_text(admin.text_for_search)
-        self.should_have_text(admin.text_for_should)
+        self.search_repo(issue.repo)
+        self.search_text(issue.text_for_search)
+        self.should_have_text(issue.text_for_should)
