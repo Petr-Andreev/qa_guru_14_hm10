@@ -4,7 +4,7 @@ from selenium import webdriver
 from selene import browser
 
 
-@pytest.fixture(scope='function', autouse=True)
+@pytest.fixture(scope='session', autouse=True)
 def browser_management():
     with allure.step("Открываем главую страницу GitHub"):
         browser.config.base_url = 'https://github.com'
@@ -16,4 +16,5 @@ def browser_management():
         browser.config.driver_options = driver_options
 
         yield
-        browser.quit()
+        with allure.step("Закрываем браузер"):
+            browser.quit()
